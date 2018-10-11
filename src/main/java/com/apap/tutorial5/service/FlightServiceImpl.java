@@ -46,6 +46,12 @@ public class FlightServiceImpl implements FlightService {
         }
         return byFlightNumber;
 	}
+
+	@Override
+	public void deleteFlightById(long flightId) {
+		// TODO Auto-generated method stub
+		flightDb.deleteById(flightId);
+	}
 	
 	
 

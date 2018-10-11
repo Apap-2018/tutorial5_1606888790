@@ -33,4 +33,10 @@ public class PilotServiceImpl implements PilotService {
 		
 	}
 
+	@Override
+	public PilotModel getPilotById(long id) {
+		// TODO Auto-generated method stub
+		return pilotDb.findById(id);
+	}
+	
 }

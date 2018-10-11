@@ -42,22 +42,36 @@ public class PilotController {
 	private String viewPilot(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilotNya = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
 		model.addAttribute("pilot", pilotNya);
-		model.addAttribute("penerbanganPilot", pilotNya.getPilotFlight());
+		
 		return "view-pilot";
 	}
 	
-	@RequestMapping(value = "/pilot/delete/{licenseNumber}", method=RequestMethod.GET)
-	private String deletePilot(@PathVariable(value="licenseNumber") String licenseNumber, Model model) {
-		PilotModel pilotNya = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-		pilotService.deletePilot(pilotNya);
-		return "delete";
-	}
+//	@RequestMapping(value = "/pilot/delete/{licenseNumber}", method=RequestMethod.GET)
+//	private String deletePilot(@PathVariable(value="licenseNumber") String licenseNumber, Model model) {
+//		PilotModel pilotNya = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+//		pilotService.deletePilot(pilotNya);
+//		return "delete";
+//	}
+//	
+//	@RequestMapping(value = "/pilot/update/{licenseNumber}", method=RequestMethod.GET)
+//	private String updatePilot(@PathVariable(value="licenseNumber") String licenseNumber, Model model) {
+//		PilotModel pilotNya = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+//		model.addAttribute("pilot", pilotNya);
+//		return "updatePilot";
+//	}
 	
-	@RequestMapping(value = "/pilot/update/{licenseNumber}", method=RequestMethod.GET)
-	private String updatePilot(@PathVariable(value="licenseNumber") String licenseNumber, Model model) {
-		PilotModel pilotNya = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
+	@RequestMapping(value = "/pilot/update/{Id}", method=RequestMethod.GET)
+	private String updatePilotById(@PathVariable(value="Id") long Id, Model model) {
+		PilotModel pilotNya = pilotService.getPilotById(Id);
 		model.addAttribute("pilot", pilotNya);
 		return "updatePilot";
+	}
+	
+	@RequestMapping(value = "/pilot/delete/{Id}", method=RequestMethod.GET)
+	private String deletePilot(@PathVariable(value="Id") long Id, Model model) {
+		PilotModel pilotNya = pilotService.getPilotById(Id);
+		pilotService.deletePilot(pilotNya);
+		return "delete";
 	}
 	
 	@RequestMapping(value = "/pilot/update",method = RequestMethod.POST)
