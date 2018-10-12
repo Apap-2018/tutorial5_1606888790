@@ -16,8 +16,15 @@
 		    <h3 th:text="'Destination : '+ ${flight.destination}" ></h3>
 		    <h3 th:text="'Time : '+ ${flight.time}" ></h3>
 		    
-			<td><a th:href="@{|/flight/update/${flight.pilot.licenseNumber}/${flight.flightNumber}|}">Update Flight</a></td>
-			<td><a th:href="@{|/flight/delete/${flight.flightNumber}|}">Delete Flight</a></td>
+			<form th:action="@{/flight/delete}"  method="POST">
+		        <input type="hidden"  name="id" th:value="*{flight.id}" />
+		        <button type="submit">Delete</button>
+		    </form>
+		
+		    <form th:action="@{'/flight/update/'+ ${flight.pilot.licenseNumber}}" method="POST" >
+		        <input type="hidden"  name="id" th:value="*{flight.id}" />
+		        <button type="submit">Update</button>
+		    </form>
 		    
 		    <br><br>
 		    <p th:text="'License Number : ' + ${flight.pilot.licenseNumber}"></p>		
