@@ -66,8 +66,8 @@ public class FlightController {
 		return "delete";
 	}
 	
-    @RequestMapping("/flight/update/{id}")
-    private String update(@PathVariable(name = "id")String licenseNumber,@ModelAttribute FlightModel flightNya , Model model){
+    @RequestMapping("/flight/update/{licenseNumber}")
+    private String update(@PathVariable(name = "licenseNumber")String licenseNumber,@ModelAttribute FlightModel flightNya , Model model){
         PilotModel pilotNya = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
         flightNya.setPilot(pilotNya);
         model.addAttribute("flight",flightNya);
