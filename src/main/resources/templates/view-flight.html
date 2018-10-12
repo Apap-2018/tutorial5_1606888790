@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<nav th:replace="fragments/fragment :: navbar('View Detail Flight')"></nav>
 
 		<td><a th:href="@{/}">Kembali ke Home</a></td>
 		<div th:each="flight : ${flightList}" >

@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<nav th:replace="fragments/fragment :: navbar('View Detail Pilot')"></nav>
 		
 		<h3 th:text="'License Number : ' + ${pilot.licenseNumber}"></h3>
 		<h3 th:text="'Pilot Name : ' +${pilot.name}"></h3>
